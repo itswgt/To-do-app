@@ -980,6 +980,7 @@
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       if (filter === 'notes') { addNote(); } else { addTask(); }
+      e.target.blur();
     }
   });
 
