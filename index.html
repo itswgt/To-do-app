@@ -7,7 +7,6 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
   :root {
-    /* Base */
     --bg:        #FAF8FC;
     --surface:   #FFFFFF;
     --surface2:  #F2EEF8;
@@ -19,7 +18,6 @@
     --shadow-lg: 0 6px 28px rgba(120,90,180,0.14);
     --radius:    14px;
 
-    /* Task identity — soft pink */
     --task-bg:          #FFF0F4;
     --task-border:      #F0BCC8;
     --task-accent:      #D4607A;
@@ -27,7 +25,6 @@
     --task-badge-bg:    #FDDDE5;
     --task-badge-text:  #9B2A45;
 
-    /* Note identity — soft lavender */
     --note-bg:          #F4F0FF;
     --note-border:      #C8BAF0;
     --note-accent:      #7C5CBF;
@@ -35,23 +32,19 @@
     --note-badge-bg:    #E8E0FA;
     --note-badge-text:  #5B3FA8;
 
-    /* Done — muted neutral blend */
     --done-bg:          #F5F2FA;
     --done-border:      #D8D0EC;
     --done-accent:      #B0A8CC;
 
-    /* Slate-blue — header & comments */
     --slate:            #4A6B8A;
     --slate-dark:       #345070;
     --slate-light:      #E8EFF6;
     --slate-border:     #B8CEDD;
     --slate-bubble:     #F0F5FA;
 
-    /* Header */
     --header-bg:        #B0B8C8;
     --header-color:     #fff;
 
-    /* Toggle */
     --toggle-track:     rgba(0,0,0,0.12);
     --toggle-thumb:     #fff;
   }
@@ -105,7 +98,6 @@
     transition: background 0.25s, color 0.25s;
   }
 
-  /* Header */
   header {
     width: 100%;
     background: var(--header-bg);
@@ -125,7 +117,6 @@
     flex: 1;
   }
 
-  /* Dark mode toggle */
   .theme-toggle {
     display: flex;
     align-items: center;
@@ -166,11 +157,6 @@
     background: var(--toggle-thumb);
     box-shadow: 0 1px 4px rgba(0,0,0,0.25);
     transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1), background 0.25s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 10px;
-    line-height: 1;
   }
   [data-theme="dark"] .toggle-thumb {
     transform: translateX(20px);
@@ -191,7 +177,6 @@
   }
   .btn-export:hover { background: rgba(255,255,255,0.28); }
 
-  /* Main */
   main {
     width: 100%;
     max-width: 700px;
@@ -201,7 +186,6 @@
     gap: 16px;
   }
 
-  /* Stats */
   .stats { display: flex; gap: 12px; flex-wrap: wrap; }
   .stat-chip {
     background: var(--surface);
@@ -215,7 +199,6 @@
   }
   .stat-chip strong { color: var(--text); font-size: 1rem; margin-right: 4px; }
 
-  /* Input panel */
   .input-panel {
     background: var(--surface);
     border-radius: var(--radius);
@@ -257,7 +240,6 @@
   .btn-note { background: var(--note-accent); color: #fff; }
   .btn-note:hover { background: var(--note-accent-dark); }
 
-  /* Filter bar */
   .filter-bar { display: flex; gap: 8px; flex-wrap: wrap; }
   .filter-btn {
     cursor: pointer; background: var(--surface);
@@ -273,7 +255,6 @@
   .filter-btn.active[data-filter="notes"]  { background: var(--note-accent);  border-color: var(--note-accent); }
   .filter-btn.active[data-filter="done"]   { background: var(--slate);        border-color: var(--slate); }
 
-  /* Cards container */
   #cards-container { display: flex; flex-direction: column; gap: 14px; }
 
   .card-wrapper { display: flex; flex-direction: column; gap: 6px; }
@@ -295,7 +276,6 @@
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  /* Drag handle */
   .drag-handle {
     cursor: grab; color: #ccc; font-size: 1rem;
     padding: 2px 4px 2px 0; flex-shrink: 0;
@@ -306,7 +286,6 @@
 
   .card-header { display: flex; align-items: flex-start; gap: 12px; }
 
-  /* Checkbox — pink */
   .task-cb {
     width: 20px; height: 20px; border-radius: 5px;
     border: 2px solid var(--task-accent); background: var(--surface);
@@ -321,46 +300,67 @@
     transform: translate(-50%, -52%); font-weight: 700;
   }
 
-  .task-text { flex: 1; font-size: 0.97rem; line-height: 1.5; font-weight: 500; word-break: break-word; color: var(--text); }
+  .task-text { flex: 1; font-size: 0.97rem; line-height: 1.5; font-weight: 500; word-break: break-word; color: var(--text); min-width: 0; }
   .done .task-text { text-decoration: line-through; color: var(--muted); }
 
   .task-text[contenteditable="true"] { outline: none; border-bottom: 2px solid var(--note-accent); padding-bottom: 2px; cursor: text; }
   .edit-hint { font-size: 0.72rem; color: var(--note-accent); margin-left: auto; font-style: italic; }
 
-  .card-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .card-meta { display: flex; align-items: flex-start; gap: 8px; flex-wrap: wrap; }
   .timestamp { font-size: 0.75rem; color: var(--muted); display: flex; align-items: center; gap: 4px; }
   .timestamp svg { opacity: 0.5; }
 
-  .timestamps-done { display: flex; align-items: center; gap: 14px; font-family: 'DM Sans', sans-serif; }
-  .ts-block { display: flex; align-items: center; gap: 5px; }
-  .ts-divider { width: 1px; height: 14px; background: var(--border); flex-shrink: 0; }
-  .ts-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
-  .ts-value { font-size: 0.73rem; font-weight: 500; white-space: nowrap; color: var(--text); }
+  /* ── Mobile-optimised done timestamps ── */
+  .timestamps-done {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-family: 'DM Sans', sans-serif;
+    min-width: 0;
+    flex: 1;
+  }
+  .ts-block {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+  }
+  .ts-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .ts-value {
+    font-size: 0.73rem;
+    font-weight: 500;
+    color: var(--text);
+    word-break: break-word;
+  }
   .ts-block:last-child .ts-label { color: #5A7A5A; }
   .ts-block:last-child .ts-value  { color: #3A5E3A; }
   [data-theme="dark"] .ts-block:last-child .ts-label { color: #6A9A6A; }
   [data-theme="dark"] .ts-block:last-child .ts-value  { color: #8ABA8A; }
 
-  /* Pin button */
   .btn-pin { background: none; border: none; cursor: pointer; font-size: 0.95rem; line-height: 1; padding: 2px 4px; flex-shrink: 0; margin-top: 1px; opacity: 0.22; transition: opacity 0.15s, transform 0.15s; color: var(--text); }
   .btn-pin:hover { opacity: 0.55; transform: rotate(-20deg); }
   .btn-pin.pinned { opacity: 1; transform: rotate(-20deg); }
   .task-card    .btn-pin.pinned { color: var(--task-accent-dark); }
   .comment-only .btn-pin.pinned { color: var(--note-accent-dark); }
 
-  /* Pinned task */
   .card.task-card.pinned-card { background: #FFE4EA; border-color: #E898AA; border-left-color: var(--task-accent-dark); box-shadow: 0 0 0 2px rgba(160,48,80,0.12), var(--shadow); }
   [data-theme="dark"] .card.task-card.pinned-card { background: #3A1828; border-color: #6A2840; }
   .card.task-card.pinned-card .badge-task { background: #F9B8C8; color: var(--task-accent-dark); }
   [data-theme="dark"] .card.task-card.pinned-card .badge-task { background: #4A1A2A; color: #F090A8; }
 
-  /* Pinned note */
   .card.comment-only.pinned-card { background: #E8E0FA; border-color: #A890DC; border-left-color: var(--note-accent-dark); box-shadow: 0 0 0 2px rgba(78,46,153,0.13), var(--shadow); }
   [data-theme="dark"] .card.comment-only.pinned-card { background: #251840; border-color: #5A3898; }
   .card.comment-only.pinned-card .badge-note { background: #C8B8F0; color: var(--note-accent-dark); }
   [data-theme="dark"] .card.comment-only.pinned-card .badge-note { background: #301A50; color: #B090E8; }
 
-  /* Pin section labels */
   .pin-section-label { font-size: 0.70rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); padding: 2px 0 4px 2px; display: flex; align-items: center; gap: 6px; }
   .pin-section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); border-radius: 1px; }
   .pin-divider { margin-top: 4px; }
@@ -372,14 +372,13 @@
   }
   .done-section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); border-radius: 1px; }
 
-  /* Badges */
   .badge { font-size: 0.70rem; font-weight: 600; padding: 2px 9px; border-radius: 20px; letter-spacing: 0.04em; text-transform: uppercase; }
   .badge-task { background: var(--task-badge-bg);  color: var(--task-badge-text); }
   .badge-note { background: var(--note-badge-bg);  color: var(--note-badge-text); }
   .badge-done { background: #EAE6F4; color: #7A70A8; }
   [data-theme="dark"] .badge-done { background: #2A2540; color: #9A90C8; }
 
-  .btn-del { background: none; border: none; cursor: pointer; color: #ccc; font-size: 1.1rem; line-height: 1; padding: 2px 4px; border-radius: 5px; transition: color 0.15s; margin-left: auto; }
+  .btn-del { background: none; border: none; cursor: pointer; color: #ccc; font-size: 1.1rem; line-height: 1; padding: 2px 4px; border-radius: 5px; transition: color 0.15s; margin-left: auto; flex-shrink: 0; }
   .btn-del:hover { color: var(--red); }
 
   .comment-toggle-bar { display: flex; justify-content: flex-end; padding-right: 4px; }
@@ -392,7 +391,6 @@
   }
   .btn-toggle-comments:hover { opacity: 1; }
 
-  /* Comments timeline */
   .comments-section { padding-left: 20px; display: flex; flex-direction: column; gap: 10px; position: relative; }
   .comments-section::before { content: ''; position: absolute; left: 0; top: 6px; bottom: 6px; width: 2px; background: linear-gradient(to bottom, var(--slate), transparent); border-radius: 2px; opacity: 0.5; }
 
@@ -401,7 +399,6 @@
     to   { opacity: 1; transform: translateX(0); }
   }
 
-  /* Comment bubbles */
   .comment-bubble { background: var(--slate-bubble); border-radius: 0 12px 12px 12px; padding: 9px 36px 9px 13px; font-size: 0.85rem; font-family: 'Courier New', Courier, monospace; color: var(--text); line-height: 1.5; position: relative; animation: bubbleIn 0.22s ease; border: 1.5px solid var(--slate-border); margin-left: 10px; transition: background 0.25s, border-color 0.25s; }
   .comment-bubble.new { animation: bubbleIn 0.28s cubic-bezier(0.34, 1.56, 0.64, 1); }
   .comment-bubble::before { content: ''; position: absolute; top: 0; left: -9px; width: 0; height: 0; border-top: 9px solid var(--slate-border); border-left: 9px solid transparent; }
@@ -410,7 +407,6 @@
   .comment-bubble .btn-del-comment { position: absolute; top: 6px; right: 8px; background: none; border: none; cursor: pointer; color: #ccc; font-size: 0.9rem; transition: color 0.15s; }
   .comment-bubble .btn-del-comment:hover { color: var(--red); }
 
-  /* Comment input */
   .add-comment-row { display: flex; align-items: center; margin-left: 30px; background: var(--slate-bubble); border: 1.5px solid var(--slate-border); border-radius: 10px; overflow: hidden; transition: border-color 0.18s, box-shadow 0.18s, background 0.25s; }
   .add-comment-row:focus-within { border-color: var(--slate); box-shadow: 0 0 0 3px rgba(74,107,138,0.13); }
   .add-comment-row input { flex: 1; border: none; padding: 9px 14px; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; background: transparent; outline: none; color: var(--text); }
@@ -440,7 +436,6 @@
 
   #loader { text-align: center; padding: 20px; color: var(--muted); font-size: 0.85rem; display: none; }
 
-  /* Undo Toast */
   #undo-toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--text); color: var(--bg); padding: 11px 20px; border-radius: 10px; font-size: 0.88rem; font-family: 'DM Sans', sans-serif; display: flex; align-items: center; gap: 14px; box-shadow: 0 6px 24px rgba(0,0,0,0.22); opacity: 0; pointer-events: none; transition: opacity 0.2s ease, transform 0.2s ease; z-index: 999; white-space: nowrap; overflow: hidden; }
   #undo-toast.show { opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0); }
   .undo-btn { background: var(--slate); border: none; border-radius: 6px; color: #fff; font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 700; padding: 4px 12px; cursor: pointer; transition: background 0.15s; }
@@ -448,6 +443,19 @@
   .toast-bar { position: absolute; bottom: 0; left: 0; height: 3px; background: linear-gradient(to right, var(--slate), var(--task-accent)); border-radius: 0 0 10px 10px; width: 100%; transform-origin: left; }
   #undo-toast.show .toast-bar { animation: shrink 5s linear forwards; }
   @keyframes shrink { from { transform: scaleX(1); } to { transform: scaleX(0); } }
+
+  /* Mobile responsive */
+  @media (max-width: 480px) {
+    header { padding: 16px 16px 14px; }
+    header h1 { font-size: 2rem; }
+    .btn-export { padding: 6px 10px; font-size: 0.76rem; }
+    .theme-toggle-label { font-size: 0.72rem; }
+    main { padding: 16px 10px 60px; }
+    .card { padding: 14px 14px 12px; }
+    .timestamps-done { gap: 3px; }
+    .ts-label { font-size: 0.62rem; }
+    .ts-value  { font-size: 0.68rem; }
+  }
 </style>
 </head>
 <body>
@@ -455,11 +463,10 @@
 <header>
   <h1>To Do</h1>
   <div style="display:flex;align-items:flex-end;gap:10px;margin-bottom:2px;">
-    <!-- Dark mode toggle -->
     <div class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode">
       <span class="theme-toggle-label" id="theme-label">Light</span>
       <div class="toggle-track">
-        <div class="toggle-thumb" id="toggle-thumb">☀️</div>
+        <div class="toggle-thumb" id="toggle-thumb"></div>
       </div>
     </div>
     <button class="btn-export" onclick="exportData()">Export</button>
@@ -497,11 +504,9 @@
 </div>
 
 <script>
-  // ── Theme ─────────────────────────────────────────────────
   function applyTheme(dark) {
     document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
     document.getElementById('theme-label').textContent = dark ? 'Dark' : 'Light';
-    document.getElementById('toggle-thumb').textContent = dark ? '🌙' : '☀️';
     localStorage.setItem('taskflow_theme', dark ? 'dark' : 'light');
   }
 
@@ -510,11 +515,9 @@
     applyTheme(!isDark);
   }
 
-  // Apply saved theme on load
   const savedTheme = localStorage.getItem('taskflow_theme');
   if (savedTheme === 'dark') applyTheme(true);
 
-  // ── Data ──────────────────────────────────────────────────
   let items     = JSON.parse(localStorage.getItem('taskflow_items') || '[]');
   let filter    = 'all';
   const PAGE    = 15;
@@ -536,7 +539,6 @@
     return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
-  // ── Add items ─────────────────────────────────────────────
   function addTask() {
     const val = document.getElementById('main-input').value.trim();
     if (!val) { flash(); return; }
@@ -559,7 +561,6 @@
     setTimeout(() => { ta.style.borderColor = ''; }, 1500);
   }
 
-  // ── Toggle done ───────────────────────────────────────────
   function toggleDone(id) {
     const item = items.find(i => i.id === id);
     if (!item) return;
@@ -581,7 +582,6 @@
     save(); renderAll();
   }
 
-  // ── Undo delete ───────────────────────────────────────────
   let deletedItem  = null;
   let deletedIndex = null;
   let toastTimer   = null;
@@ -626,7 +626,6 @@
     document.getElementById('undo-toast').classList.remove('show');
   }
 
-  // ── Comments ──────────────────────────────────────────────
   function addCommentToItem(id) {
     const inp = document.getElementById('ci-' + id);
     const val = inp.value.trim();
@@ -654,7 +653,7 @@
     const tog = document.getElementById('tog-' + id);
     if (tog) {
       const count = item.comments.length;
-      tog.textContent = '\uD83D\uDCAC ' + count + ' comment' + (count !== 1 ? 's' : '');
+      tog.textContent = count + ' comment' + (count !== 1 ? 's' : '');
     }
   }
 
@@ -664,7 +663,6 @@
     save(); page=1; renderAll();
   }
 
-  // ── Pin ───────────────────────────────────────────────────
   function togglePin(id) {
     const item = items.find(i => i.id === id);
     if (!item) return;
@@ -677,7 +675,6 @@
     if (item) { item.comments = item.comments.filter(c => c.id !== commentId); save(); renderAll(); }
   }
 
-  // ── Filter ────────────────────────────────────────────────
   function setFilter(f, btn) {
     filter = f;
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -704,7 +701,6 @@
     '</div>';
   }
 
-  // ── Render ────────────────────────────────────────────────
   function renderAll() {
     const list = filtered();
     const con  = document.getElementById('cards-container');
@@ -784,7 +780,6 @@
       '<div class="stat-chip"><strong>' + notes.length + '</strong> Notes</div>';
   }
 
-  // ── Build card ────────────────────────────────────────────
   function buildCard(item) {
     const isTask = item.type === 'task';
 
@@ -810,13 +805,13 @@
 
     const clock = '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>';
 
+    // Timestamps: stacked vertically for mobile, no overflow
     const timestampHtml = (isTask && item.done && item.completedAt)
       ? '<div class="timestamps-done">' +
           '<div class="ts-block">' +
             '<span class="ts-label">Created</span>' +
             '<span class="ts-value">' + fmt(item.ts) + '</span>' +
           '</div>' +
-          '<div class="ts-divider"></div>' +
           '<div class="ts-block">' +
             '<span class="ts-label">Completed</span>' +
             '<span class="ts-value">' + fmt(item.completedAt) + '</span>' +
@@ -865,7 +860,7 @@
       const count = (item.comments||[]).length;
       toggleBar.innerHTML =
         '<button class="btn-toggle-comments" id="tog-' + item.id + '" onclick="toggleComments(\'' + item.id + '\')">' +
-          '\uD83D\uDCAC ' + (count > 0 ? count + ' comment' + (count !== 1 ? 's' : '') : 'Add comment') +
+          (count > 0 ? count + ' comment' + (count !== 1 ? 's' : '') : 'Add comment') +
         '</button>';
       wrapper.appendChild(toggleBar);
       wrapper.appendChild(area);
@@ -874,7 +869,6 @@
     return wrapper;
   }
 
-  // ── Toggle comments ───────────────────────────────────────
   function toggleComments(id) {
     const area = document.getElementById('area-' + id);
     const btn  = document.getElementById('tog-' + id);
@@ -927,7 +921,6 @@
     if (hint) hint.style.display = 'none';
   }
 
-  // ── Drag & drop ───────────────────────────────────────────
   let dragSrcId = null;
 
   function initDrag() {
@@ -948,7 +941,6 @@
     });
   }
 
-  // ── Infinite scroll ───────────────────────────────────────
   new IntersectionObserver(entries => {
     if (entries[0].isIntersecting && !rendering) {
       const list = filtered();
@@ -965,7 +957,6 @@
     }
   }, { threshold: 0.1 }).observe(document.getElementById('loader'));
 
-  // ── Export / Import ───────────────────────────────────────
   function exportData() {
     const a = document.createElement('a');
     a.href = URL.createObjectURL(new Blob([JSON.stringify(items,null,2)], {type:'application/json'}));
@@ -985,7 +976,6 @@
     r.readAsText(file); e.target.value = '';
   }
 
-  // ── Enter shortcut ────────────────────────────────────────
   document.getElementById('main-input').addEventListener('keydown', e => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
