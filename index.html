@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -7,82 +7,42 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
   :root {
-    --bg:        #FAF8FC;
-    --surface:   #FFFFFF;
-    --surface2:  #F2EEF8;
-    --border:    #E2D8F0;
-    --text:      #2A2340;
-    --muted:     #8A85A8;
-    --red:       #B83030;
-    --shadow:    0 2px 14px rgba(120,90,180,0.08);
-    --shadow-lg: 0 6px 28px rgba(120,90,180,0.14);
-    --radius:    14px;
+    --bg:               #F7F7F5;
+    --surface:          #FFFFFF;
+    --surface2:         #F0EFF0;
+    --border:           #E0DED8;
+    --text:             #1A1A1A;
+    --muted:            #888480;
+    --red:              #B03030;
+    --shadow:           0 1px 8px rgba(0,0,0,0.06);
+    --shadow-lg:        0 4px 20px rgba(0,0,0,0.10);
+    --radius:           12px;
 
-    --task-bg:          #FFF0F4;
-    --task-border:      #F0BCC8;
-    --task-accent:      #D4607A;
-    --task-accent-dark: #A03050;
-    --task-badge-bg:    #FDDDE5;
-    --task-badge-text:  #9B2A45;
+    /* Task — warm stone */
+    --task-bg:          #FAFAF8;
+    --task-border:      #D8D4CC;
+    --task-accent:      #6B6560;
+    --task-accent-dark: #3D3A36;
+    --task-badge-bg:    #EDEAE4;
+    --task-badge-text:  #4A4540;
 
-    --note-bg:          #F4F0FF;
-    --note-border:      #C8BAF0;
-    --note-accent:      #7C5CBF;
-    --note-accent-dark: #4E2E99;
-    --note-badge-bg:    #E8E0FA;
-    --note-badge-text:  #5B3FA8;
+    /* Note — cool slate */
+    --note-bg:          #F8F8FA;
+    --note-border:      #D0D0D8;
+    --note-accent:      #606878;
+    --note-accent-dark: #383E4A;
+    --note-badge-bg:    #E8E8EE;
+    --note-badge-text:  #40454E;
 
-    --done-bg:          #F5F2FA;
-    --done-border:      #D8D0EC;
-    --done-accent:      #B0A8CC;
+    /* Done */
+    --done-bg:          #FAFAF8;
+    --done-border:      #D8D4CC;
+    --done-accent:      #C0BDB8;
 
-    --slate:            #4A6B8A;
-    --slate-dark:       #345070;
-    --slate-light:      #E8EFF6;
-    --slate-border:     #B8CEDD;
-    --slate-bubble:     #F0F5FA;
-
-    --header-bg:        #B0B8C8;
-    --header-color:     #fff;
-
-    --toggle-track:     rgba(0,0,0,0.12);
-    --toggle-thumb:     #fff;
-  }
-
-  [data-theme="dark"] {
-    --bg:        #16131F;
-    --surface:   #211D2E;
-    --surface2:  #2A2540;
-    --border:    #3A3356;
-    --text:      #EDE8FA;
-    --muted:     #7A7498;
-    --shadow:    0 2px 14px rgba(0,0,0,0.35);
-    --shadow-lg: 0 6px 28px rgba(0,0,0,0.5);
-
-    --task-bg:          #2C1C28;
-    --task-border:      #5A2E40;
-    --task-badge-bg:    #3D1A2A;
-    --task-badge-text:  #F09AB0;
-
-    --note-bg:          #1E1830;
-    --note-border:      #4A3880;
-    --note-badge-bg:    #2A2040;
-    --note-badge-text:  #B09AE8;
-
-    --done-bg:          #1E1B2A;
-    --done-border:      #3A3356;
-
-    --slate:            #6A9BB8;
-    --slate-dark:       #4A7A9A;
-    --slate-light:      #1E2B38;
-    --slate-border:     #3A5870;
-    --slate-bubble:     #1A2530;
-
-    --header-bg:        #1A1626;
-    --header-color:     #EDE8FA;
-
-    --toggle-track:     rgba(255,255,255,0.12);
-    --toggle-thumb:     #EDE8FA;
+    /* Comments */
+    --comment-bg:       #F4F4F2;
+    --comment-border:   #D8D6D0;
+    --comment-accent:   #888480;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -95,19 +55,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition: background 0.25s, color 0.25s;
   }
 
+  /* Header */
   header {
     width: 100%;
-    background: var(--header-bg);
-    color: var(--header-color);
+    background: #3A3A38;
+    color: #fff;
     padding: 22px 32px 18px;
     display: flex;
     align-items: flex-end;
     gap: 14px;
-    border-bottom: 3px solid rgba(0,0,0,0.08);
-    transition: background 0.25s;
+    border-bottom: 2px solid rgba(0,0,0,0.15);
   }
   header h1 {
     font-family: 'DM Serif Display', serif;
@@ -116,67 +75,22 @@
     line-height: 1;
     flex: 1;
   }
-
-  .theme-toggle {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 2px;
-    cursor: pointer;
-    user-select: none;
-  }
-  .theme-toggle-label {
-    font-size: 0.78rem;
-    font-weight: 600;
-    font-family: 'DM Sans', sans-serif;
-    color: var(--header-color);
-    opacity: 0.75;
-    letter-spacing: 0.03em;
-  }
-  .toggle-track {
-    position: relative;
-    width: 44px;
-    height: 24px;
-    background: var(--toggle-track);
-    border-radius: 999px;
-    border: 1.5px solid rgba(255,255,255,0.25);
-    transition: background 0.25s, border-color 0.25s;
-    flex-shrink: 0;
-  }
-  [data-theme="dark"] .toggle-track {
-    background: rgba(108,80,200,0.5);
-    border-color: rgba(255,255,255,0.18);
-  }
-  .toggle-thumb {
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background: var(--toggle-thumb);
-    box-shadow: 0 1px 4px rgba(0,0,0,0.25);
-    transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1), background 0.25s;
-  }
-  [data-theme="dark"] .toggle-thumb {
-    transform: translateX(20px);
-  }
-
   .btn-export {
-    background: rgba(255,255,255,0.15);
-    color: var(--header-color);
-    border: 1.5px solid rgba(255,255,255,0.35);
-    border-radius: 8px;
+    background: rgba(255,255,255,0.10);
+    color: rgba(255,255,255,0.85);
+    border: 1px solid rgba(255,255,255,0.22);
+    border-radius: 7px;
     padding: 7px 14px;
     font-family: 'DM Sans', sans-serif;
     font-size: 0.82rem;
-    font-weight: 600;
+    font-weight: 500;
     cursor: pointer;
     transition: background 0.17s;
     margin-bottom: 2px;
   }
-  .btn-export:hover { background: rgba(255,255,255,0.28); }
+  .btn-export:hover { background: rgba(255,255,255,0.18); }
 
+  /* Main */
   main {
     width: 100%;
     max-width: 700px;
@@ -186,52 +100,52 @@
     gap: 16px;
   }
 
-  .stats { display: flex; gap: 12px; flex-wrap: wrap; }
+  /* Stats */
+  .stats { display: flex; gap: 10px; flex-wrap: wrap; }
   .stat-chip {
     background: var(--surface);
-    border: 1.5px solid var(--border);
-    border-radius: 10px;
-    padding: 8px 16px;
-    font-size: 0.82rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 7px 14px;
+    font-size: 0.80rem;
     color: var(--muted);
     font-weight: 500;
-    transition: background 0.25s, border-color 0.25s;
   }
-  .stat-chip strong { color: var(--text); font-size: 1rem; margin-right: 4px; }
+  .stat-chip strong { color: var(--text); font-size: 0.95rem; margin-right: 3px; }
 
+  /* Input panel */
   .input-panel {
     background: var(--surface);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
-    border: 1.5px solid var(--border);
-    padding: 20px;
+    border: 1px solid var(--border);
+    padding: 18px;
     display: flex;
     flex-direction: column;
     gap: 12px;
-    transition: background 0.25s, border-color 0.25s;
   }
   .input-panel textarea {
     width: 100%;
-    border: 1.5px solid var(--border);
-    border-radius: 10px;
-    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
     font-family: 'DM Sans', sans-serif;
-    font-size: 1rem;
+    font-size: 0.97rem;
     color: var(--text);
     background: var(--surface2);
     resize: none;
     outline: none;
-    transition: border-color 0.2s, background 0.25s, color 0.25s;
+    transition: border-color 0.2s;
     line-height: 1.6;
     min-height: 90px;
   }
-  .input-panel textarea:focus { border-color: var(--note-accent); background: var(--surface); }
+  .input-panel textarea:focus { border-color: var(--task-accent); background: #fff; }
 
-  .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn-row { display: flex; gap: 8px; flex-wrap: wrap; }
   .btn {
-    cursor: pointer; border: none; border-radius: 8px;
+    cursor: pointer; border: none; border-radius: 7px;
     padding: 9px 18px; font-family: 'DM Sans', sans-serif;
-    font-size: 0.88rem; font-weight: 600;
+    font-size: 0.86rem; font-weight: 600;
     transition: background 0.18s, transform 0.1s;
   }
   .btn:active { transform: scale(0.97); }
@@ -240,235 +154,197 @@
   .btn-note { background: var(--note-accent); color: #fff; }
   .btn-note:hover { background: var(--note-accent-dark); }
 
-  .filter-bar { display: flex; gap: 8px; flex-wrap: wrap; }
+  /* Filter bar */
+  .filter-bar { display: flex; gap: 6px; flex-wrap: wrap; }
   .filter-btn {
     cursor: pointer; background: var(--surface);
-    border: 1.5px solid var(--border); border-radius: 30px;
-    padding: 6px 16px; font-size: 0.83rem;
+    border: 1px solid var(--border); border-radius: 20px;
+    padding: 5px 15px; font-size: 0.82rem;
     font-family: 'DM Sans', sans-serif; color: var(--muted);
-    font-weight: 500; transition: all 0.17s;
+    font-weight: 500; transition: all 0.15s;
   }
-  .filter-btn:hover                        { background: var(--slate);        color: #fff; border-color: var(--slate); }
-  .filter-btn.active                       { color: #fff; }
-  .filter-btn.active[data-filter="all"]    { background: var(--slate);        border-color: var(--slate); }
-  .filter-btn.active[data-filter="tasks"]  { background: var(--task-accent);  border-color: var(--task-accent); }
-  .filter-btn.active[data-filter="notes"]  { background: var(--note-accent);  border-color: var(--note-accent); }
-  .filter-btn.active[data-filter="done"]   { background: var(--slate);        border-color: var(--slate); }
+  .filter-btn:hover { background: var(--task-accent); color: #fff; border-color: var(--task-accent); }
+  .filter-btn.active { color: #fff; }
+  .filter-btn.active[data-filter="all"]   { background: #3A3A38; border-color: #3A3A38; }
+  .filter-btn.active[data-filter="tasks"] { background: var(--task-accent); border-color: var(--task-accent); }
+  .filter-btn.active[data-filter="notes"] { background: var(--note-accent); border-color: var(--note-accent); }
+  .filter-btn.active[data-filter="done"]  { background: #3A3A38; border-color: #3A3A38; }
 
-  #cards-container { display: flex; flex-direction: column; gap: 14px; }
-
-  .card-wrapper { display: flex; flex-direction: column; gap: 6px; }
+  /* Cards */
+  #cards-container { display: flex; flex-direction: column; gap: 10px; }
+  .card-wrapper { display: flex; flex-direction: column; gap: 4px; }
   .card-wrapper.dragging { opacity: 0.4; }
-  .card-wrapper.drag-over > .card { outline: 2px dashed var(--note-accent); outline-offset: 2px; }
+  .card-wrapper.drag-over > .card { outline: 2px dashed var(--comment-accent); outline-offset: 2px; }
 
   .card {
     border-radius: var(--radius); box-shadow: var(--shadow);
-    padding: 18px 20px 14px; display: flex; flex-direction: column;
-    gap: 10px; animation: slideIn 0.25s ease; transition: box-shadow 0.2s, background 0.25s, border-color 0.25s;
+    padding: 16px 18px 12px; display: flex; flex-direction: column;
+    gap: 9px; animation: slideIn 0.22s ease; transition: box-shadow 0.18s;
   }
   .card:hover { box-shadow: var(--shadow-lg); }
-  .card.task-card    { background: var(--task-bg);  border: 1.5px solid var(--task-border); border-left: 4px solid var(--task-accent); }
-  .card.comment-only { background: var(--note-bg);  border: 1.5px solid var(--note-border); border-left: 4px solid var(--note-accent); }
-  .card.done         { background: var(--task-bg);  border: 1.5px solid var(--task-border); border-left: 4px solid var(--task-accent); }
+  .card.task-card    { background: var(--task-bg); border: 1px solid var(--task-border); border-left: 3px solid var(--task-accent); }
+  .card.comment-only { background: var(--note-bg); border: 1px solid var(--note-border); border-left: 3px solid var(--note-accent); }
+  .card.done         { background: var(--task-bg); border: 1px solid var(--task-border); border-left: 3px solid var(--done-accent); }
 
   @keyframes slideIn {
-    from { opacity: 0; transform: translateY(10px); }
+    from { opacity: 0; transform: translateY(8px); }
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  .drag-handle {
-    cursor: grab; color: #ccc; font-size: 1rem;
-    padding: 2px 4px 2px 0; flex-shrink: 0;
-    margin-top: 2px; user-select: none; line-height: 1;
-  }
+  /* Drag handle */
+  .drag-handle { cursor: grab; color: #ccc; font-size: 0.95rem; padding: 2px 4px 2px 0; flex-shrink: 0; margin-top: 2px; user-select: none; line-height: 1; }
   .drag-handle:active { cursor: grabbing; }
   .drag-handle:hover { color: var(--muted); }
 
-  .card-header { display: flex; align-items: flex-start; gap: 12px; }
+  .card-header { display: flex; align-items: flex-start; gap: 10px; }
 
+  /* Checkbox */
   .task-cb {
-    width: 20px; height: 20px; border-radius: 5px;
-    border: 2px solid var(--task-accent); background: var(--surface);
-    cursor: pointer; flex-shrink: 0; margin-top: 2px;
+    width: 18px; height: 18px; border-radius: 4px;
+    border: 1.5px solid var(--task-accent); background: #fff;
+    cursor: pointer; flex-shrink: 0; margin-top: 3px;
     appearance: none; -webkit-appearance: none;
     transition: background 0.15s, border-color 0.15s; position: relative;
   }
   .task-cb:checked { background: var(--task-accent); border-color: var(--task-accent); }
   .task-cb:checked::after {
     content: '✓'; position: absolute; color: #fff;
-    font-size: 12px; top: 50%; left: 50%;
+    font-size: 11px; top: 50%; left: 50%;
     transform: translate(-50%, -52%); font-weight: 700;
   }
 
-  .task-text { flex: 1; font-size: 0.97rem; line-height: 1.5; font-weight: 500; word-break: break-word; color: var(--text); min-width: 0; }
+  .task-text { flex: 1; font-size: 0.95rem; line-height: 1.5; font-weight: 400; word-break: break-word; color: var(--text); }
   .done .task-text { text-decoration: line-through; color: var(--muted); }
 
-  .task-text[contenteditable="true"] { outline: none; border-bottom: 2px solid var(--note-accent); padding-bottom: 2px; cursor: text; }
-  .edit-hint { font-size: 0.72rem; color: var(--note-accent); margin-left: auto; font-style: italic; }
+  .task-text[contenteditable="true"] { outline: none; border-bottom: 1.5px solid var(--note-accent); padding-bottom: 2px; cursor: text; }
+  .edit-hint { font-size: 0.70rem; color: var(--muted); margin-left: auto; font-style: italic; }
 
-  .card-meta { display: flex; align-items: flex-start; gap: 8px; flex-wrap: wrap; }
-  .timestamp { font-size: 0.75rem; color: var(--muted); display: flex; align-items: center; gap: 4px; }
-  .timestamp svg { opacity: 0.5; }
+  .card-meta { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+  .timestamp { font-size: 0.72rem; color: var(--muted); display: flex; align-items: center; gap: 3px; }
+  .timestamp svg { opacity: 0.4; }
 
-  /* ── Mobile-optimised done timestamps ── */
-  .timestamps-done {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    font-family: 'DM Sans', sans-serif;
-    min-width: 0;
-    flex: 1;
-  }
-  .ts-block {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    flex-wrap: wrap;
-  }
-  .ts-label {
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--muted);
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-  .ts-value {
-    font-size: 0.73rem;
-    font-weight: 500;
-    color: var(--text);
-    word-break: break-word;
-  }
-  .ts-block:last-child .ts-label { color: #5A7A5A; }
-  .ts-block:last-child .ts-value  { color: #3A5E3A; }
-  [data-theme="dark"] .ts-block:last-child .ts-label { color: #6A9A6A; }
-  [data-theme="dark"] .ts-block:last-child .ts-value  { color: #8ABA8A; }
+  /* Dual timestamps */
+  .timestamps-done { display: flex; align-items: center; gap: 12px; font-family: 'DM Sans', sans-serif; }
+  .ts-block { display: flex; align-items: center; gap: 4px; }
+  .ts-divider { width: 1px; height: 12px; background: var(--border); flex-shrink: 0; }
+  .ts-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
+  .ts-value { font-size: 0.71rem; font-weight: 400; white-space: nowrap; color: var(--muted); }
+  .ts-block:last-child .ts-label { color: #607060; }
+  .ts-block:last-child .ts-value { color: #506050; }
 
-  .btn-pin { background: none; border: none; cursor: pointer; font-size: 0.95rem; line-height: 1; padding: 2px 4px; flex-shrink: 0; margin-top: 1px; opacity: 0.22; transition: opacity 0.15s, transform 0.15s; color: var(--text); }
-  .btn-pin:hover { opacity: 0.55; transform: rotate(-20deg); }
-  .btn-pin.pinned { opacity: 1; transform: rotate(-20deg); }
-  .task-card    .btn-pin.pinned { color: var(--task-accent-dark); }
+  /* Badges */
+  .badge { font-size: 0.68rem; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.04em; text-transform: uppercase; }
+  .badge-task { background: var(--task-badge-bg); color: var(--task-badge-text); }
+  .badge-note { background: var(--note-badge-bg); color: var(--note-badge-text); }
+  .badge-done { background: var(--surface2); color: var(--muted); }
+
+  /* Pin button */
+  .btn-pin { background: none; border: none; cursor: pointer; font-size: 0.88rem; line-height: 1; padding: 2px 4px; flex-shrink: 0; margin-top: 2px; opacity: 0.20; transition: opacity 0.15s, transform 0.15s; color: var(--text); }
+  .btn-pin:hover { opacity: 0.50; transform: rotate(-20deg); }
+  .btn-pin.pinned { opacity: 1; transform: rotate(-20deg); color: var(--task-accent-dark); }
   .comment-only .btn-pin.pinned { color: var(--note-accent-dark); }
 
-  .card.task-card.pinned-card { background: #FFE4EA; border-color: #E898AA; border-left-color: var(--task-accent-dark); box-shadow: 0 0 0 2px rgba(160,48,80,0.12), var(--shadow); }
-  [data-theme="dark"] .card.task-card.pinned-card { background: #3A1828; border-color: #6A2840; }
-  .card.task-card.pinned-card .badge-task { background: #F9B8C8; color: var(--task-accent-dark); }
-  [data-theme="dark"] .card.task-card.pinned-card .badge-task { background: #4A1A2A; color: #F090A8; }
+  /* Pinned */
+  .card.task-card.pinned-card    { background: #F2F0EC; border-color: #C8C4BC; border-left-color: var(--task-accent-dark); box-shadow: 0 0 0 1.5px rgba(60,55,50,0.12), var(--shadow); }
+  .card.comment-only.pinned-card { background: #EDEDF2; border-color: #C0C0CC; border-left-color: var(--note-accent-dark); box-shadow: 0 0 0 1.5px rgba(50,55,65,0.12), var(--shadow); }
+  .card.task-card.pinned-card .badge-task    { background: #DDD8D0; color: var(--task-accent-dark); }
+  .card.comment-only.pinned-card .badge-note { background: #D8D8E4; color: var(--note-accent-dark); }
 
-  .card.comment-only.pinned-card { background: #E8E0FA; border-color: #A890DC; border-left-color: var(--note-accent-dark); box-shadow: 0 0 0 2px rgba(78,46,153,0.13), var(--shadow); }
-  [data-theme="dark"] .card.comment-only.pinned-card { background: #251840; border-color: #5A3898; }
-  .card.comment-only.pinned-card .badge-note { background: #C8B8F0; color: var(--note-accent-dark); }
-  [data-theme="dark"] .card.comment-only.pinned-card .badge-note { background: #301A50; color: #B090E8; }
-
-  .pin-section-label { font-size: 0.70rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); padding: 2px 0 4px 2px; display: flex; align-items: center; gap: 6px; }
-  .pin-section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); border-radius: 1px; }
-  .pin-divider { margin-top: 4px; }
-  .done-section-label {
-    font-size: 0.70rem; font-weight: 700; letter-spacing: 0.08em;
+  /* Section labels */
+  .pin-section-label, .done-section-label {
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em;
     text-transform: uppercase; color: var(--muted);
-    padding: 6px 0 4px 2px; display: flex; align-items: center; gap: 6px;
-    margin-top: 6px;
+    padding: 4px 0 2px 2px; display: flex; align-items: center; gap: 8px;
   }
-  .done-section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); border-radius: 1px; }
+  .pin-section-label::after, .done-section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); border-radius: 1px; }
+  .pin-divider { margin-top: 2px; }
+  .done-section-label { margin-top: 6px; }
 
-  .badge { font-size: 0.70rem; font-weight: 600; padding: 2px 9px; border-radius: 20px; letter-spacing: 0.04em; text-transform: uppercase; }
-  .badge-task { background: var(--task-badge-bg);  color: var(--task-badge-text); }
-  .badge-note { background: var(--note-badge-bg);  color: var(--note-badge-text); }
-  .badge-done { background: #EAE6F4; color: #7A70A8; }
-  [data-theme="dark"] .badge-done { background: #2A2540; color: #9A90C8; }
-
-  .btn-del { background: none; border: none; cursor: pointer; color: #ccc; font-size: 1.1rem; line-height: 1; padding: 2px 4px; border-radius: 5px; transition: color 0.15s; margin-left: auto; flex-shrink: 0; }
+  /* Delete */
+  .btn-del { background: none; border: none; cursor: pointer; color: #ccc; font-size: 1rem; line-height: 1; padding: 2px 4px; border-radius: 4px; transition: color 0.15s; margin-left: auto; }
   .btn-del:hover { color: var(--red); }
 
-  .comment-toggle-bar { display: flex; justify-content: flex-end; padding-right: 4px; }
+  /* Comment toggle */
+  .comment-toggle-bar { display: flex; justify-content: flex-end; padding-right: 2px; }
   .btn-toggle-comments {
     background: none; border: none; cursor: pointer;
-    font-size: 0.78rem; font-family: 'DM Sans', sans-serif;
-    color: var(--slate); font-weight: 600;
-    padding: 3px 0; opacity: 0.7;
-    transition: opacity 0.15s;
+    font-size: 0.75rem; font-family: 'DM Sans', sans-serif;
+    color: var(--comment-accent); font-weight: 500;
+    padding: 2px 0; opacity: 0.65; transition: opacity 0.15s;
+    letter-spacing: 0.01em;
   }
   .btn-toggle-comments:hover { opacity: 1; }
 
-  .comments-section { padding-left: 20px; display: flex; flex-direction: column; gap: 10px; position: relative; }
-  .comments-section::before { content: ''; position: absolute; left: 0; top: 6px; bottom: 6px; width: 2px; background: linear-gradient(to bottom, var(--slate), transparent); border-radius: 2px; opacity: 0.5; }
+  /* Comments */
+  .comments-section { padding-left: 18px; display: flex; flex-direction: column; gap: 8px; position: relative; }
+  .comments-section::before { content: ''; position: absolute; left: 0; top: 4px; bottom: 4px; width: 1.5px; background: linear-gradient(to bottom, var(--comment-border), transparent); border-radius: 2px; }
 
   @keyframes bubbleIn {
-    from { opacity: 0; transform: translateX(-8px); }
+    from { opacity: 0; transform: translateX(-6px); }
     to   { opacity: 1; transform: translateX(0); }
   }
 
-  .comment-bubble { background: var(--slate-bubble); border-radius: 0 12px 12px 12px; padding: 9px 36px 9px 13px; font-size: 0.85rem; font-family: 'Courier New', Courier, monospace; color: var(--text); line-height: 1.5; position: relative; animation: bubbleIn 0.22s ease; border: 1.5px solid var(--slate-border); margin-left: 10px; transition: background 0.25s, border-color 0.25s; }
-  .comment-bubble.new { animation: bubbleIn 0.28s cubic-bezier(0.34, 1.56, 0.64, 1); }
-  .comment-bubble::before { content: ''; position: absolute; top: 0; left: -9px; width: 0; height: 0; border-top: 9px solid var(--slate-border); border-left: 9px solid transparent; }
-  .comment-bubble::after  { content: ''; position: absolute; top: 1.5px; left: -7px; width: 0; height: 0; border-top: 8px solid var(--slate-bubble); border-left: 8px solid transparent; }
-  .comment-bubble .comment-ts { display: block; font-size: 0.70rem; color: var(--muted); margin-top: 5px; font-family: 'DM Sans', sans-serif; }
-  .comment-bubble .btn-del-comment { position: absolute; top: 6px; right: 8px; background: none; border: none; cursor: pointer; color: #ccc; font-size: 0.9rem; transition: color 0.15s; }
+  .comment-bubble {
+    background: var(--comment-bg); border-radius: 0 8px 8px 8px;
+    padding: 8px 32px 8px 11px; font-size: 0.82rem;
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--text); line-height: 1.5; position: relative;
+    animation: bubbleIn 0.20s ease;
+    border: 1px solid var(--comment-border); margin-left: 8px;
+  }
+  .comment-bubble.new { animation: bubbleIn 0.26s cubic-bezier(0.34, 1.4, 0.64, 1); }
+  .comment-bubble::before { content: ''; position: absolute; top: 0; left: -7px; width: 0; height: 0; border-top: 7px solid var(--comment-border); border-left: 7px solid transparent; }
+  .comment-bubble::after  { content: ''; position: absolute; top: 1px; left: -5.5px; width: 0; height: 0; border-top: 6px solid var(--comment-bg); border-left: 6px solid transparent; }
+  .comment-bubble .comment-ts { display: block; font-size: 0.68rem; color: var(--muted); margin-top: 4px; font-family: 'DM Sans', sans-serif; }
+  .comment-bubble .btn-del-comment { position: absolute; top: 6px; right: 7px; background: none; border: none; cursor: pointer; color: #ccc; font-size: 0.85rem; transition: color 0.15s; }
   .comment-bubble .btn-del-comment:hover { color: var(--red); }
 
-  .add-comment-row { display: flex; align-items: center; margin-left: 30px; background: var(--slate-bubble); border: 1.5px solid var(--slate-border); border-radius: 10px; overflow: hidden; transition: border-color 0.18s, box-shadow 0.18s, background 0.25s; }
-  .add-comment-row:focus-within { border-color: var(--slate); box-shadow: 0 0 0 3px rgba(74,107,138,0.13); }
-  .add-comment-row input { flex: 1; border: none; padding: 9px 14px; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; background: transparent; outline: none; color: var(--text); }
+  /* Comment input */
+  .add-comment-row { display: flex; align-items: center; margin-left: 26px; background: var(--comment-bg); border: 1px solid var(--comment-border); border-radius: 8px; overflow: hidden; transition: border-color 0.18s, box-shadow 0.18s; }
+  .add-comment-row:focus-within { border-color: var(--comment-accent); box-shadow: 0 0 0 2px rgba(136,132,128,0.12); }
+  .add-comment-row input { flex: 1; border: none; padding: 8px 12px; font-family: 'DM Sans', sans-serif; font-size: 0.83rem; background: transparent; outline: none; color: var(--text); }
   .add-comment-row input::placeholder { color: var(--muted); }
-  .btn-add-c { background: none; border: none; border-left: 1.5px solid var(--slate-border); color: var(--slate); cursor: pointer; padding: 9px 14px; font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 600; transition: background 0.15s, color 0.15s; white-space: nowrap; }
-  .btn-add-c:hover { background: var(--slate); color: #fff; }
+  .btn-add-c { background: none; border: none; border-left: 1px solid var(--comment-border); color: var(--comment-accent); cursor: pointer; padding: 8px 12px; font-family: 'DM Sans', sans-serif; font-size: 0.80rem; font-weight: 600; transition: background 0.15s, color 0.15s; white-space: nowrap; }
+  .btn-add-c:hover { background: var(--comment-accent); color: #fff; }
 
+  /* Clear done */
   .clear-done-bar { display: flex; justify-content: flex-end; }
-  .btn-clear-done { background: none; border: 1.5px solid #E0A8B0; border-radius: 8px; color: var(--red); font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 600; padding: 6px 14px; cursor: pointer; transition: background 0.15s, color 0.15s; }
+  .btn-clear-done { background: none; border: 1px solid #D8C0C0; border-radius: 6px; color: var(--red); font-family: 'DM Sans', sans-serif; font-size: 0.80rem; font-weight: 600; padding: 5px 12px; cursor: pointer; transition: background 0.15s, color 0.15s; }
   .btn-clear-done:hover { background: var(--red); color: #fff; border-color: var(--red); }
 
-  .empty-state { text-align: center; padding: 48px 0 24px; color: var(--muted); font-size: 0.92rem; }
-  .empty-state .icon { font-size: 2.4rem; margin-bottom: 10px; }
-
+  /* Empty states */
+  .empty-state { text-align: center; padding: 48px 0 24px; color: var(--muted); font-size: 0.90rem; }
+  .empty-state .icon { font-size: 2rem; margin-bottom: 10px; }
   .empty-done { text-align: center; padding: 52px 20px 24px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
   .done-circles { display: flex; gap: 10px; justify-content: center; margin-bottom: 4px; }
-  .circle { width: 38px; height: 38px; border-radius: 50%; border: 2.5px dashed var(--border); animation: pulse-circle 2s ease-in-out infinite; }
+  .circle { width: 34px; height: 34px; border-radius: 50%; border: 2px dashed var(--border); animation: pulse-circle 2s ease-in-out infinite; }
   .circle:nth-child(1) { animation-delay: 0s;   border-color: var(--task-border); }
   .circle:nth-child(2) { animation-delay: 0.3s; border-color: var(--note-border); }
-  .circle:nth-child(3) { animation-delay: 0.6s; border-color: var(--done-border); }
+  .circle:nth-child(3) { animation-delay: 0.6s; border-color: var(--border); }
   @keyframes pulse-circle {
-    0%,100% { opacity: 0.5; transform: scale(1); }
-    50%      { opacity: 1;   transform: scale(1.12); }
+    0%,100% { opacity: 0.4; transform: scale(1); }
+    50%      { opacity: 0.9; transform: scale(1.1); }
   }
-  .empty-done h3 { font-family: 'DM Serif Display', serif; font-size: 1.3rem; color: var(--text); }
-  .empty-done p  { font-size: 0.88rem; color: var(--muted); max-width: 260px; line-height: 1.5; }
+  .empty-done h3 { font-family: 'DM Serif Display', serif; font-size: 1.25rem; color: var(--text); }
+  .empty-done p  { font-size: 0.86rem; color: var(--muted); max-width: 260px; line-height: 1.5; }
 
-  #loader { text-align: center; padding: 20px; color: var(--muted); font-size: 0.85rem; display: none; }
+  #loader { text-align: center; padding: 20px; color: var(--muted); font-size: 0.83rem; display: none; }
 
-  #undo-toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--text); color: var(--bg); padding: 11px 20px; border-radius: 10px; font-size: 0.88rem; font-family: 'DM Sans', sans-serif; display: flex; align-items: center; gap: 14px; box-shadow: 0 6px 24px rgba(0,0,0,0.22); opacity: 0; pointer-events: none; transition: opacity 0.2s ease, transform 0.2s ease; z-index: 999; white-space: nowrap; overflow: hidden; }
+  /* Undo Toast */
+  #undo-toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(20px); background: #1A1A1A; color: #fff; padding: 10px 18px; border-radius: 8px; font-size: 0.86rem; font-family: 'DM Sans', sans-serif; display: flex; align-items: center; gap: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.22); opacity: 0; pointer-events: none; transition: opacity 0.2s ease, transform 0.2s ease; z-index: 999; white-space: nowrap; overflow: hidden; }
   #undo-toast.show { opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0); }
-  .undo-btn { background: var(--slate); border: none; border-radius: 6px; color: #fff; font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 700; padding: 4px 12px; cursor: pointer; transition: background 0.15s; }
-  .undo-btn:hover { background: var(--slate-dark); }
-  .toast-bar { position: absolute; bottom: 0; left: 0; height: 3px; background: linear-gradient(to right, var(--slate), var(--task-accent)); border-radius: 0 0 10px 10px; width: 100%; transform-origin: left; }
+  .undo-btn { background: #3A3A38; border: none; border-radius: 5px; color: #fff; font-family: 'DM Sans', sans-serif; font-size: 0.80rem; font-weight: 700; padding: 4px 11px; cursor: pointer; transition: background 0.15s; }
+  .undo-btn:hover { background: #555; }
+  .toast-bar { position: absolute; bottom: 0; left: 0; height: 2px; background: var(--comment-accent); border-radius: 0 0 8px 8px; width: 100%; transform-origin: left; }
   #undo-toast.show .toast-bar { animation: shrink 5s linear forwards; }
   @keyframes shrink { from { transform: scaleX(1); } to { transform: scaleX(0); } }
-
-  /* Mobile responsive */
-  @media (max-width: 480px) {
-    header { padding: 16px 16px 14px; }
-    header h1 { font-size: 2rem; }
-    .btn-export { padding: 6px 10px; font-size: 0.76rem; }
-    .theme-toggle-label { font-size: 0.72rem; }
-    main { padding: 16px 10px 60px; }
-    .card { padding: 14px 14px 12px; }
-    .timestamps-done { gap: 3px; }
-    .ts-label { font-size: 0.62rem; }
-    .ts-value  { font-size: 0.68rem; }
-  }
 </style>
 </head>
 <body>
 
 <header>
   <h1>To Do</h1>
-  <div style="display:flex;align-items:flex-end;gap:10px;margin-bottom:2px;">
-    <div class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode">
-      <span class="theme-toggle-label" id="theme-label">Light</span>
-      <div class="toggle-track">
-        <div class="toggle-thumb" id="toggle-thumb"></div>
-      </div>
-    </div>
+  <div style="display:flex;gap:8px;margin-bottom:2px;">
     <button class="btn-export" onclick="exportData()">Export</button>
     <button class="btn-export" onclick="document.getElementById('import-input').click()">Import</button>
     <input type="file" id="import-input" accept=".json" style="display:none" onchange="importData(event)">
@@ -504,20 +380,6 @@
 </div>
 
 <script>
-  function applyTheme(dark) {
-    document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
-    document.getElementById('theme-label').textContent = dark ? 'Dark' : 'Light';
-    localStorage.setItem('taskflow_theme', dark ? 'dark' : 'light');
-  }
-
-  function toggleTheme() {
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    applyTheme(!isDark);
-  }
-
-  const savedTheme = localStorage.getItem('taskflow_theme');
-  if (savedTheme === 'dark') applyTheme(true);
-
   let items     = JSON.parse(localStorage.getItem('taskflow_items') || '[]');
   let filter    = 'all';
   const PAGE    = 15;
@@ -557,7 +419,7 @@
 
   function flash() {
     const ta = document.getElementById('main-input');
-    ta.style.borderColor = '#e07070';
+    ta.style.borderColor = '#c07070';
     setTimeout(() => { ta.style.borderColor = ''; }, 1500);
   }
 
@@ -566,15 +428,13 @@
     if (!item) return;
     item.done = !item.done;
     if (item.done) {
-      item.completedAt  = now();
+      item.completedAt   = now();
       item.originalIndex = items.indexOf(item);
       items = items.filter(i => i.id !== id);
       items.push(item);
     } else {
       delete item.completedAt;
-      const target = typeof item.originalIndex === 'number'
-        ? Math.min(item.originalIndex, items.length)
-        : 0;
+      const target = typeof item.originalIndex === 'number' ? Math.min(item.originalIndex, items.length) : 0;
       delete item.originalIndex;
       items = items.filter(i => i.id !== id);
       items.splice(target, 0, item);
@@ -582,15 +442,12 @@
     save(); renderAll();
   }
 
-  let deletedItem  = null;
-  let deletedIndex = null;
-  let toastTimer   = null;
+  let deletedItem = null, deletedIndex = null, toastTimer = null;
 
   function deleteItem(id) {
     const idx = items.findIndex(i => i.id === id);
     if (idx === -1) return;
-    deletedItem  = items[idx];
-    deletedIndex = idx;
+    deletedItem = items[idx]; deletedIndex = idx;
     items.splice(idx, 1);
     save(); page=1; renderAll();
     const label = deletedItem.text.length > 32 ? deletedItem.text.slice(0,32)+'...' : deletedItem.text;
@@ -616,9 +473,7 @@
       bar.style.animation = '';
       toast.classList.add('show');
     }));
-    toastTimer = setTimeout(() => {
-      hideToast(); deletedItem = null; deletedIndex = null;
-    }, 5000);
+    toastTimer = setTimeout(() => { hideToast(); deletedItem = null; deletedIndex = null; }, 5000);
   }
 
   function hideToast() {
@@ -637,7 +492,6 @@
     item.comments.push(c);
     inp.value = '';
     save();
-
     const section = document.getElementById('cs-' + id);
     if (section) {
       const bubble = document.createElement('div');
@@ -645,11 +499,10 @@
       bubble.innerHTML =
         escHtml(c.text) +
         '<span class="comment-ts">' + fmt(c.ts) + '</span>' +
-        '<button class="btn-del-comment" onclick="deleteComment(\'' + id + '\',\'' + c.id + '\')" title="Delete">\u2715</button>';
+        '<button class="btn-del-comment" onclick="deleteComment(\'' + id + '\',\'' + c.id + '\')">\u2715</button>';
       section.appendChild(bubble);
       bubble.scrollIntoView({ behavior:'smooth', block:'nearest' });
     }
-
     const tog = document.getElementById('tog-' + id);
     if (tog) {
       const count = item.comments.length;
@@ -696,9 +549,7 @@
   function emptyState(title, msg) {
     return '<div class="empty-done">' +
       '<div class="done-circles"><div class="circle"></div><div class="circle"></div><div class="circle"></div></div>' +
-      '<h3>' + title + '</h3>' +
-      '<p>' + msg + '</p>' +
-    '</div>';
+      '<h3>' + title + '</h3><p>' + msg + '</p></div>';
   }
 
   function renderAll() {
@@ -708,10 +559,10 @@
 
     if (list.length === 0) {
       const states = {
-        all:   ['Nothing here yet',   'Add your first task or note above to get started.'],
-        tasks: ['No tasks yet',        'Add Task and start ticking things off.'],
-        notes: ['No notes yet',        'Add Note to jot down anything on your mind.'],
-        done:  ['Nothing done yet',    'Check off a task and it\'ll show up here. You\'ve got this.'],
+        all:   ['Nothing here yet',  'Add your first task or note above.'],
+        tasks: ['No tasks yet',       'Add Task and start ticking things off.'],
+        notes: ['No notes yet',       'Add Note to jot down anything on your mind.'],
+        done:  ['Nothing done yet',   'Check off a task and it\'ll show up here.'],
       };
       const [title, msg] = states[filter] || states.all;
       con.innerHTML = emptyState(title, msg);
@@ -722,51 +573,48 @@
         bar.innerHTML = '<button class="btn-clear-done" onclick="clearDone()">Clear All Completed</button>';
         con.appendChild(bar);
       }
-      const visible = list.slice(0, page * PAGE);
-      const pinnedCount = visible.filter(i => i.pinned).length;
-      const unpinnedLabel = filter === 'notes' ? 'Notes' : filter === 'done' ? 'Completed' : 'Tasks';
 
-      const showDoneDivider = (filter === 'all' || filter === 'tasks');
-      const activeItems = showDoneDivider ? visible.filter(i => !(i.type === 'task' && i.done)) : visible;
-      const doneItems   = showDoneDivider ? visible.filter(i => i.type === 'task' && i.done)    : [];
+      const visible  = list.slice(0, page * PAGE);
+      const pinCount = visible.filter(i => i.pinned).length;
+      const showDone = (filter === 'all' || filter === 'tasks');
+      const active   = showDone ? visible.filter(i => !(i.type === 'task' && i.done)) : visible;
+      const done     = showDone ? visible.filter(i =>   i.type === 'task' && i.done)  : [];
 
-      const renderItems = (itemList, startIdx) => {
-        itemList.forEach((item, i) => {
-          const idx = startIdx + i;
-          if (pinnedCount > 0 && idx === pinnedCount) {
-            const divider = document.createElement('div');
-            divider.className = 'pin-section-label pin-divider';
-            divider.textContent = unpinnedLabel;
-            con.appendChild(divider);
+      const renderGroup = (group, startIdx) => {
+        group.forEach((item, i) => {
+          if (pinCount > 0 && (startIdx + i) === pinCount) {
+            const d = document.createElement('div');
+            d.className = 'pin-section-label pin-divider';
+            d.textContent = filter === 'notes' ? 'Notes' : 'Tasks';
+            con.appendChild(d);
           }
           con.appendChild(buildCard(item));
         });
       };
 
-      if (showDoneDivider) {
-        renderItems(activeItems, 0);
-        if (doneItems.length > 0) {
-          const doneDiv = document.createElement('div');
-          doneDiv.className = 'done-section-label';
-          doneDiv.textContent = 'Completed';
-          con.appendChild(doneDiv);
-          doneItems.forEach(item => con.appendChild(buildCard(item)));
+      if (showDone) {
+        renderGroup(active, 0);
+        if (done.length > 0) {
+          const dl = document.createElement('div');
+          dl.className = 'done-section-label';
+          dl.textContent = 'Completed';
+          con.appendChild(dl);
+          done.forEach(item => con.appendChild(buildCard(item)));
         }
       } else {
-        renderItems(visible, 0);
+        renderGroup(visible, 0);
       }
 
-      if (pinnedCount > 0) {
-        const label = document.createElement('div');
-        label.className = 'pin-section-label';
-        label.textContent = 'Pinned';
-        con.insertBefore(label, con.children[filter === 'done' ? 1 : 0]);
+      if (pinCount > 0) {
+        const pl = document.createElement('div');
+        pl.className = 'pin-section-label';
+        pl.textContent = 'Pinned';
+        con.insertBefore(pl, con.children[filter === 'done' ? 1 : 0]);
       }
       initDrag();
     }
 
-    document.getElementById('loader').style.display =
-      list.length > page * PAGE ? 'block' : 'none';
+    document.getElementById('loader').style.display = list.length > page * PAGE ? 'block' : 'none';
     renderStats();
   }
 
@@ -776,96 +624,59 @@
     const notes = items.filter(i => i.type === 'note');
     document.getElementById('stats').innerHTML =
       '<div class="stat-chip"><strong>' + tasks.length + '</strong> Tasks</div>' +
-      '<div class="stat-chip"><strong>' + done.length  + '</strong> Done</div>'  +
-      '<div class="stat-chip"><strong>' + notes.length + '</strong> Notes</div>';
+      '<div class="stat-chip"><strong>' + notes.length  + '</strong> Notes</div>'  +
+      '<div class="stat-chip"><strong>' + done.length + '</strong> Done</div>';
   }
 
   function buildCard(item) {
     const isTask = item.type === 'task';
-
     const wrapper = document.createElement('div');
-    wrapper.className  = 'card-wrapper';
-    wrapper.id         = 'wrap-' + item.id;
-    wrapper.draggable  = true;
-    wrapper.dataset.id = item.id;
+    wrapper.className = 'card-wrapper'; wrapper.id = 'wrap-' + item.id;
+    wrapper.draggable = true; wrapper.dataset.id = item.id;
 
     const card = document.createElement('div');
     card.className = 'card ' + (isTask ? 'task-card' : 'comment-only') + (item.done ? ' done' : '') + (item.pinned ? ' pinned-card' : '');
     card.id = 'card-' + item.id;
 
     const pinBtn = '<button class="btn-pin' + (item.pinned ? ' pinned' : '') + '" onclick="togglePin(\'' + item.id + '\')" title="' + (item.pinned ? 'Unpin' : 'Pin') + '">&#x1F4CC;</button>';
-
-    const badge = isTask
-      ? (item.done ? '<span class="badge badge-done">Done</span>' : '<span class="badge badge-task">Task</span>')
-      : '<span class="badge badge-note">Note</span>';
-
-    const cb = isTask
-      ? '<input class="task-cb" type="checkbox"' + (item.done ? ' checked' : '') + ' onchange="toggleDone(\'' + item.id + '\')">'
-      : '<span style="display:inline-block;width:20px;height:20px;flex-shrink:0;"></span>';
-
-    const clock = '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>';
-
-    // Timestamps: stacked vertically for mobile, no overflow
-    const timestampHtml = (isTask && item.done && item.completedAt)
-      ? '<div class="timestamps-done">' +
-          '<div class="ts-block">' +
-            '<span class="ts-label">Created</span>' +
-            '<span class="ts-value">' + fmt(item.ts) + '</span>' +
-          '</div>' +
-          '<div class="ts-block">' +
-            '<span class="ts-label">Completed</span>' +
-            '<span class="ts-value">' + fmt(item.completedAt) + '</span>' +
-          '</div>' +
-        '</div>'
+    const badge  = isTask ? (item.done ? '<span class="badge badge-done">Done</span>' : '<span class="badge badge-task">Task</span>') : '<span class="badge badge-note">Note</span>';
+    const cb     = isTask ? '<input class="task-cb" type="checkbox"' + (item.done ? ' checked' : '') + ' onchange="toggleDone(\'' + item.id + '\')">' : '<span style="display:inline-block;width:18px;height:18px;flex-shrink:0;"></span>';
+    const clock  = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>';
+    const tsHtml = (isTask && item.done && item.completedAt)
+      ? '<div class="timestamps-done"><div class="ts-block"><span class="ts-label">Created</span><span class="ts-value">' + fmt(item.ts) + '</span></div><div class="ts-divider"></div><div class="ts-block"><span class="ts-label">Completed</span><span class="ts-value">' + fmt(item.completedAt) + '</span></div></div>'
       : '<span class="timestamp">' + clock + fmt(item.ts) + '</span>';
 
     card.innerHTML =
-      '<div class="card-header">' +
-        '<span class="drag-handle" title="Drag to reorder">\u28BF</span>' +
-        cb +
-        '<div class="task-text" id="txt-' + item.id + '" ondblclick="startEdit(\'' + item.id + '\')">' + escHtml(item.text) + '</div>' +
-        pinBtn +
-        '<button class="btn-del" onclick="deleteItem(\'' + item.id + '\')">\u2715</button>' +
-      '</div>' +
-      '<div class="card-meta">' +
-        badge +
-        timestampHtml +
-        '<span class="edit-hint" id="hint-' + item.id + '" style="display:none">double-click to edit &middot; Enter to save</span>' +
-      '</div>';
+      '<div class="card-header"><span class="drag-handle" title="Drag to reorder">\u28BF</span>' + cb +
+      '<div class="task-text" id="txt-' + item.id + '" ondblclick="startEdit(\'' + item.id + '\')">' + escHtml(item.text) + '</div>' +
+      pinBtn + '<button class="btn-del" onclick="deleteItem(\'' + item.id + '\')">\u2715</button></div>' +
+      '<div class="card-meta">' + badge + tsHtml +
+      '<span class="edit-hint" id="hint-' + item.id + '" style="display:none">double-click to edit &middot; Enter to save</span></div>';
 
     wrapper.appendChild(card);
 
     if (isTask) {
       const bubblesHtml = (item.comments||[]).map(c =>
-        '<div class="comment-bubble">' +
-          escHtml(c.text) +
-          '<span class="comment-ts">' + fmt(c.ts) + '</span>' +
-          '<button class="btn-del-comment" onclick="deleteComment(\'' + item.id + '\',\'' + c.id + '\')">\u2715</button>' +
-        '</div>'
+        '<div class="comment-bubble">' + escHtml(c.text) +
+        '<span class="comment-ts">' + fmt(c.ts) + '</span>' +
+        '<button class="btn-del-comment" onclick="deleteComment(\'' + item.id + '\',\'' + c.id + '\')">\u2715</button></div>'
       ).join('');
 
       const area = document.createElement('div');
-      area.className = 'comment-area';
-      area.id = 'area-' + item.id;
-      area.style.display = 'none';
+      area.className = 'comment-area'; area.id = 'area-' + item.id; area.style.display = 'none';
       area.innerHTML =
         '<div class="comments-section" id="cs-' + item.id + '">' + bubblesHtml + '</div>' +
-        '<div class="add-comment-row">' +
-          '<input id="ci-' + item.id + '" type="text" placeholder="Add a comment\u2026" onkeydown="if(event.key===\'Enter\')addCommentToItem(\'' + item.id + '\')">' +
-          '<button class="btn-add-c" onclick="addCommentToItem(\'' + item.id + '\')">\u21A9 Comment</button>' +
-        '</div>';
+        '<div class="add-comment-row"><input id="ci-' + item.id + '" type="text" placeholder="Write a comment\u2026" onkeydown="if(event.key===\'Enter\')addCommentToItem(\'' + item.id + '\')">' +
+        '<button class="btn-add-c" onclick="addCommentToItem(\'' + item.id + '\')">Add</button></div>';
 
+      const count = (item.comments||[]).length;
       const toggleBar = document.createElement('div');
       toggleBar.className = 'comment-toggle-bar';
-      const count = (item.comments||[]).length;
-      toggleBar.innerHTML =
-        '<button class="btn-toggle-comments" id="tog-' + item.id + '" onclick="toggleComments(\'' + item.id + '\')">' +
-          (count > 0 ? count + ' comment' + (count !== 1 ? 's' : '') : 'Add comment') +
-        '</button>';
+      toggleBar.innerHTML = '<button class="btn-toggle-comments" id="tog-' + item.id + '" onclick="toggleComments(\'' + item.id + '\')">' +
+        (count > 0 ? count + ' comment' + (count !== 1 ? 's' : '') : 'Add comment') + '</button>';
       wrapper.appendChild(toggleBar);
       wrapper.appendChild(area);
     }
-
     return wrapper;
   }
 
@@ -875,23 +686,18 @@
     if (!area) return;
     const open = area.style.display === 'none';
     area.style.display = open ? 'flex' : 'none';
-    area.style.flexDirection = 'column';
-    area.style.gap = '6px';
     if (open) {
+      area.style.flexDirection = 'column'; area.style.gap = '6px';
       btn.style.opacity = '1';
       const inp = document.getElementById('ci-' + id);
       if (inp) setTimeout(() => inp.focus(), 50);
-    } else {
-      btn.style.opacity = '';
-    }
+    } else { btn.style.opacity = ''; }
   }
 
   function startEdit(id) {
-    const el   = document.getElementById('txt-' + id);
-    const hint = document.getElementById('hint-' + id);
+    const el = document.getElementById('txt-' + id), hint = document.getElementById('hint-' + id);
     if (!el) return;
-    el.contentEditable = 'true';
-    el.focus();
+    el.contentEditable = 'true'; el.focus();
     const r = document.createRange(); r.selectNodeContents(el); r.collapse(false);
     const s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
     if (hint) hint.style.display = 'inline';
@@ -900,8 +706,7 @@
   }
 
   function saveEdit(id) {
-    const el   = document.getElementById('txt-' + id);
-    const hint = document.getElementById('hint-' + id);
+    const el = document.getElementById('txt-' + id), hint = document.getElementById('hint-' + id);
     if (!el || el.contentEditable !== 'true') return;
     el.contentEditable = 'false'; el.onblur = null;
     if (hint) hint.style.display = 'none';
@@ -912,8 +717,7 @@
   }
 
   function cancelEdit(id) {
-    const el   = document.getElementById('txt-' + id);
-    const hint = document.getElementById('hint-' + id);
+    const el = document.getElementById('txt-' + id), hint = document.getElementById('hint-' + id);
     if (!el) return;
     el.contentEditable = 'false'; el.onblur = null;
     const item = items.find(i => i.id === id);
@@ -922,18 +726,16 @@
   }
 
   let dragSrcId = null;
-
   function initDrag() {
     const con = document.getElementById('cards-container');
     con.querySelectorAll('.card-wrapper').forEach(w => {
       w.addEventListener('dragstart', e => { dragSrcId = w.dataset.id; w.classList.add('dragging'); e.dataTransfer.effectAllowed = 'move'; });
       w.addEventListener('dragend',   ()  => { w.classList.remove('dragging'); con.querySelectorAll('.card-wrapper').forEach(x=>x.classList.remove('drag-over')); });
-      w.addEventListener('dragover',  e  => { e.preventDefault(); e.dataTransfer.dropEffect='move'; con.querySelectorAll('.card-wrapper').forEach(x=>x.classList.remove('drag-over')); if(w.dataset.id!==dragSrcId) w.classList.add('drag-over'); });
+      w.addEventListener('dragover',  e  => { e.preventDefault(); con.querySelectorAll('.card-wrapper').forEach(x=>x.classList.remove('drag-over')); if(w.dataset.id!==dragSrcId)w.classList.add('drag-over'); });
       w.addEventListener('drop', e => {
         e.preventDefault();
         if (!dragSrcId || w.dataset.id === dragSrcId) return;
-        const si = items.findIndex(i=>i.id===dragSrcId);
-        const ti = items.findIndex(i=>i.id===w.dataset.id);
+        const si = items.findIndex(i=>i.id===dragSrcId), ti = items.findIndex(i=>i.id===w.dataset.id);
         if (si===-1||ti===-1) return;
         const [moved] = items.splice(si,1); items.splice(ti,0,moved);
         save(); renderAll();
@@ -967,21 +769,14 @@
     const file = e.target.files[0]; if (!file) return;
     const r = new FileReader();
     r.onload = ev => {
-      try {
-        const p = JSON.parse(ev.target.result);
-        if (!Array.isArray(p)) throw new Error();
-        items = p; save(); page=1; renderAll();
-      } catch { alert('Invalid file.'); }
+      try { const p = JSON.parse(ev.target.result); if (!Array.isArray(p)) throw 0; items = p; save(); page=1; renderAll(); }
+      catch { alert('Invalid file.'); }
     };
     r.readAsText(file); e.target.value = '';
   }
 
   document.getElementById('main-input').addEventListener('keydown', e => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      if (filter === 'notes') { addNote(); } else { addTask(); }
-      e.target.blur();
-    }
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); filter === 'notes' ? addNote() : addTask(); }
   });
 
   renderAll();
