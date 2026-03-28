@@ -327,11 +327,18 @@
   .timestamp { font-size: 0.72rem; color: var(--muted); display: flex; align-items: center; gap: 3px; }
   .timestamp svg { opacity: 0.4; }
 
-  .timestamps-done { display: flex; align-items: center; gap: 12px; font-family: 'DM Sans', sans-serif; }
+  .timestamps-done { display: flex; flex-direction: column; gap: 3px; font-family: 'DM Sans', sans-serif; }
   .ts-block { display: flex; align-items: center; gap: 4px; }
-  .ts-divider { width: 1px; height: 12px; background: var(--border); flex-shrink: 0; }
-  .ts-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
-  .ts-value { font-size: 0.71rem; font-weight: 400; white-space: nowrap; color: var(--muted); }
+  .ts-divider { display: none; }
+  .ts-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); flex-shrink: 0; }
+  .ts-value { font-size: 0.71rem; font-weight: 400; color: var(--muted); }
+
+  /* On wider screens, show side-by-side with divider */
+  @media (min-width: 480px) {
+    .timestamps-done { flex-direction: row; align-items: center; gap: 12px; }
+    .ts-divider { display: block; width: 1px; height: 12px; background: var(--border); flex-shrink: 0; }
+    .ts-value { white-space: nowrap; }
+  }
   .ts-block:last-child .ts-label { color: #607060; }
   .ts-block:last-child .ts-value { color: #506050; }
   [data-theme="dark"] .ts-block:last-child .ts-label { color: #708070; }
